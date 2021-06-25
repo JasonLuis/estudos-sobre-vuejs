@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretivas: v-for</title>
+</head>
+<body>
+
+  <div id="directives">
+    <h2>Cidades de São Paulo</h2>
+   <ol>
+     <!--<li v-for="city in cities">{{city}}</li>-->
+     <li v-for="item in cities">
+       {{item.city}} - {{item.country}}
+     </li>
+
+   </ol>
+
+   <h2>Grandes Filmes de História</h2>
+   <ul>
+     <li v-for="(picture, index) in movies">{{ index }} - {{ picture }}</li>
+   </ul>
+
+   <h2>Empresa</h2>
+   <p v-for="(value, key, index) in company">{{ key }}: {{ value }}</p>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+    
+    let app= new Vue({
+      el: '#directives',
+      data: {
+        //cities:['Carapicuiba','São Paulo','Cotia','Vargem Grande Paulista','Barueri']
+        cities:[{
+          city: 'Carapicuiba',
+          country: 'Brasil'
+        },{
+          city: 'São Paulo',
+          country: 'Brasil'
+        },{
+          city: 'Cotia',
+          country: 'Brasil'
+        },{
+          city: 'Vargem Grande Paulista',
+          country: 'Brasil'
+        },{
+          city: 'Barueri',
+          country: 'Brasil'
+        }],
+        movies: ['Star Wars', 'Jurassic Park','De volta para o Futuro'],
+        company: {
+          name: 'Facebook',
+          year: 2004,
+          creator: 'Mark',
+        }
+      },
+    })
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretivas: v-if e v-else</title>
+</head>
+<body>
+
+  <div id="directives">
+    
+    <h4>{{ name }}</h4>
+    <h4 v-text="name"></h4>
+    
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+    
+    let app= new Vue({
+      el: '#directives',
+      data: {
+        name: 'Jason Luis'
+      },
+    })
+  </script>
+</body>
+</html>
+
