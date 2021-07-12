@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos - Modificadores de Mouse</title>
+  <link rel="stylesheet" href="../estilizacao/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div id="events">
+    
+    <div class="container">
+        <h1>Bootcamp</h1>
+        <div :style="{backgroundColor: backgraund, width: '200px', height: '200px',}" v-on="{mouseenter: changeColor, mouseout: changeColor}"></div>
+       
+    </div>
+     
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+
+    let app= new Vue({
+        el: '#events',
+        data: {
+            backgraund: 'blue',
+        },
+        methods: {
+           changeColor(){
+                let backgraundColor = (this.backgraund == 'blue') ? 'red' : 'blue';
+                this.backgraund = backgraundColor;
+           } 
+        }
+    })
+    
+  </script>
+
+</body>
+</html>
+

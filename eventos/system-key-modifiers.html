@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos - Modificadores de Teclado do Sistema</title>
+  <link rel="stylesheet" href="../estilizacao/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div id="events">
+    
+    <div class="container">
+        <form action="" class="form" v-on:submit.prevent>
+            <div class="form-group">
+                <label>Pressione as teclas abaixo</label>
+
+                <input type="text" class="form-control" placeholder="Pressione Ctrl" @keydown.ctrl="exec">  
+                <input type="text" class="form-control" placeholder="Pressione Alt" @keydown.alt="exec">
+                <input type="text" class="form-control" placeholder="Pressione Shift" @keydown.shift="exec">
+                <input type="text" class="form-control" placeholder="Pressione Meta" @keydown.meta="exec">
+                
+            </div>
+        </form>
+        <hr>
+        <div class="row">
+            <div class="col" @click.ctrl.exact="toggleClass">
+                1    
+            </div>
+            <div class="col" @click.ctrl.exact="toggleClass">
+                2
+            </div>
+            <div class="col" @click.ctrl.exact="toggle Class">
+                3
+            </div>
+            <div class="col" @click.ctrl.exact="toggleClass">
+                4
+            </div>
+        </div>
+    </div>
+     
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+
+    let app= new Vue({
+        el: '#events',
+        data: {
+        
+        },
+        methods: {
+            exec(e){
+                console.log(e.key);
+            },
+            toggleClass(event){
+               let el =  event.target;
+               let isClass = el.classList.contains('bg-info')
+
+               let method = (el.classList.contains('bg-info')) ? 'remove' : 'add';
+               
+               eval(`el.classList.${method}('bg-info')`);
+            }
+        }
+    })
+    
+  </script>
+
+</body>
+</html>
+
