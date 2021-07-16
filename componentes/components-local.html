@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes - Local</title>
+  <link rel="stylesheet" href="../Desafio-1-blog/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div id="components">
+    
+    <div class="container">
+        <text-render text="Bootcamp"></text-render>
+        
+        <hr>
+
+        <list></list>
+    </div>
+     
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+    Vue.component('text-render', {
+        props: ['text'],
+        template: `
+            <div>
+                <h4>{{ text }}</h4>
+            </div>
+        `
+    });
+    /*Componente Global*/
+    /*
+    Vue.component('list-component', {
+        template: `
+            <ul>
+                <li v-for="n in names">{{ n }}</li>
+            </ul>
+        `,
+        data: () => {
+            return {
+                names: ['José','Maria','Pedro','Thiago', 'Matias']
+            }
+        }
+    });*/
+
+    let listItemComponent = {
+        props: ['names'],
+        template: '<li>{{ names }}</li>'
+    }
+
+    let listComponent = {
+        template: `
+            <ul>
+                <list-item v-for="person in names" :names="person"><list-item/>
+            </ul>
+        `,
+        data: () => {
+            return {
+                names: ['José','Maria','Pedro','Thiago', 'Matias']
+            }
+        },
+        components: {
+           listItem:  listItemComponent
+        }
+    }
+    let app = new Vue({
+        el: '#components',
+        data: {
+            
+        }, 
+        components: {
+            list: listComponent
+        }      
+    })
+    
+  </script>
+
+</body>
+</html>
+
