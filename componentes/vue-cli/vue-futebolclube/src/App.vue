@@ -5,7 +5,6 @@
       @change-component="changeComponent"
     />
     <FuteSection 
-      :championship="championship"
       :current-component="currentSectionComponent"
     />
     <FuteFooter />
@@ -17,6 +16,9 @@
 import FuteHeader from './components/FuteHeader';
 import FuteFooter from './components/FuteFooter';
 import FuteSection from './components/FuteSection';
+import { mapActions } from "vuex";
+// import { mapMutations } from "vuex";
+
 export default {
   name: 'App',
   components: {
@@ -25,15 +27,20 @@ export default {
     FuteSection,
   },
   data() {
-    return {
-      championship: 'Campeonato Brasileiro',
-      currentSectionComponent: 'HcodeSectionBanner',
+    return {   
+      currentSectionComponent: 'FuteSectionBanner',
     }
   },
   methods: {
-    changeChampionship(value){
-      this.championship = value;
-    },
+    /*
+    ...mapMutations({
+      changeChampionship: 'setChampionship',
+    }),
+    */
+    ...mapActions(['changeChampionship']),
+    /*changeChampionship: function(value) {
+      this.$store.dispatch('changeChampionship', value);
+    },*/
     changeComponent(value) {
       console.log(value)
       let component;

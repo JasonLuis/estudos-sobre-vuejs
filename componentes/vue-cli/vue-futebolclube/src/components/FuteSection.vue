@@ -14,7 +14,7 @@
                   <h2>Seu clube é: {{ myClub }}</h2>
               </div>
               <div class="col-6">
-                <FuteInput v-model="myClub" />
+                <FuteInput />
               </div>
           </div>
       </div>
@@ -24,7 +24,8 @@
 <script>
 import FuteSectionBanner from './FuteSectionBanner';
 import FuteInput from './FuteInput';
-
+//import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
     components: { 
         FuteSectionBanner,
@@ -33,13 +34,24 @@ export default {
     },
     data() {
         return {
-            myClub: 'Verdão da Massa',
+            
         } 
     },
     props: {
-        championship: String,
         currentComponent: String,
-    }
+    },
+    computed: {
+        ...mapGetters({
+            championship: 'getChampionship',
+            myClub: 'getClubName',
+        }),
+        /*
+        ...mapState(['championship']),
+        ...mapState({
+            myClub: 'clubName',
+        })
+        */
+    } 
 }
 </script>
 
