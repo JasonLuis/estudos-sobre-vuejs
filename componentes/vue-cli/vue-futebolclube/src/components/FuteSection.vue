@@ -5,12 +5,15 @@
               <h3>Você está vendo notícias do: {{ championship }}</h3>
           </div>
       </div>
-
-      <component :is="currentComponent"> </component>
+      <transition name="fade-view">
+          <router-view></router-view>  
+      </transition>  
+      <!-- <component :is="currentComponent"> </component> -->
 
       <div class="container">
           <div class="row my-club mt-5">
               <div class="col-6">
+                 
                   <h2>Seu clube é: {{ myClub }}</h2>
               </div>
               <div class="col-6">
@@ -22,14 +25,12 @@
 </template>
 
 <script>
-import FuteSectionBanner from './FuteSectionBanner';
+
 import FuteInput from './FuteInput';
 //import { mapState } from 'vuex';
 import { mapGetters } from 'vuex';
 export default {
     components: { 
-        FuteSectionBanner,
-        FuteSectionNews: () => import('./FuteSectionNews'),
         FuteInput,
     },
     data() {
@@ -56,5 +57,10 @@ export default {
 </script>
 
 <style scoped> 
-
+.fade-view-enter, .fade-view-leave-to {
+    opacity: 0;
+}
+.fade-view-enter-active, .fade-view-leave-active {
+    transition: opacity .5s ease-in-out;
+}
 </style>

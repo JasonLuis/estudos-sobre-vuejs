@@ -4,9 +4,7 @@
       @select-championship="changeChampionship"
       @change-component="changeComponent"
     />
-    <FuteSection 
-      :current-component="currentSectionComponent"
-    />
+    <FuteSection />
     <FuteFooter />
   </div>
 </template>
@@ -28,7 +26,7 @@ export default {
   },
   data() {
     return {   
-      currentSectionComponent: 'FuteSectionBanner',
+      
     }
   },
   methods: {
